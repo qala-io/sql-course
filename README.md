@@ -1,7 +1,7 @@
 SQL Course
 ----------
 
-# Terminology and basic SQL
+# Step 1: Terminology and basic SQL
 
 * Relational databases: Postgres, MySQL, Oracle, MS SQL
 * Clients: DBeaver, JetBrains products
@@ -20,16 +20,16 @@ SQL Course
 1. Connect to the database
 2. Look through the tables and their columns - find some corresponding entities and their attributes on UI
 3. Try changing something on the UI and see the database state change accordingly
-4. Select chromatograms of injections with name that ends with 01
+4. Select injections with name that ends with 01
 5. Select peaks of some injection, sort peaks by area
-6. Select Injections of a Batch, order them by Acquisition Time. Now try by Name desc.
-7. Find chromatograms in some injection with no association with substances (not EICs)
+6. Select Injections of some Batch (open a batch, take its ID from address bar), order them by Acquisition Time. Now try by Name desc.
+7. Find chromatograms in some injection with no association with substances (`substance` column is null)
 
-# Joins
+# Step 2: Joins
 
+* Select from multiple tables without joins
 * Unique columns (Keys), Primary Key, Secondary Key
 * Foreign Key
-* Select from multiple tables without joins
 * Joining 2 tables: get chromatogram with peaks
 * Joining 3 tables: get injection with chromatograms and their peaks
 * One-to-One, One-to-Many, Many-to-Many
