@@ -39,9 +39,10 @@ SQL Course
 
 ### Homework:
 
-1. Find all injections that have substances in them
-2. Get all batches with all the peaks inside them
+1. Select all the injections that aren't added to any batches, ordered by import time. We should get the same records as [this page](https://sqlcourse.peaksel.elsci.io/injections) shows.
+2. Get all the peaks in all batches sorted by Area. Note, that peaks reference injections, and injections reference batches. So there will be 3 tables involved.
 3. Find batches and their peaks, but this time we're interested only in peaks on Total chromatograms (see `chromatograms.total` column)
+4. Count the number of rows in the last query. And compare it to the number of rows we got before that.
 
 # Subselect, case
 
