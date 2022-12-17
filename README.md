@@ -71,7 +71,9 @@ SQL Course
 
 ### Homework: 
 
-We will consider a famous Tuesday Boy problem in Probability Theory. Our goal would be to generate a set of rows and then calculate probabilities (frequencies).
+1. For each day of current and previous years, get the number of injections uploaded. Days without injections should have 0.
+2. There are 5 dice: two are 4-sided (numbers 1 through 4) and the other 3 are 6-sided (numbers 1 through 6). What's the probability the sum is going to be 15? To figure it out you need to generate all possible combinations of these 5 dice, then count the number of combinations that sum up to 15 and number of all possible combinations. Then divide one by the other. 
+3. We will consider a famous Tuesday Boy problem in Probability Theory. Our goal would be to generate a set of rows and then calculate probabilities (frequencies).
 
 <details>
 <summary> <b>Problem1 - probability of a boy given families with at least one boy</b></summary>
