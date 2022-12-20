@@ -39,12 +39,14 @@ SQL Course
 
 ### Homework:
 
-1. Select all the injections that aren't added to any batches, ordered by import time. We should get the same records as [this page](https://sqlcourse.peaksel.elsci.io/injections) shows.
+1. (Does not relate to joins) Select all the injections that aren't added to any batches, ordered by import time. We should get the same records as [this page](https://sqlcourse.peaksel.elsci.io/injections) shows.
 2. Get all the peaks in all batches sorted by Area. Note, that peaks reference injections, and injections reference batches. So there will be 3 tables involved.
-3. Find batches and their peaks, but this time we're interested only in peaks on Total chromatograms (see `chromatograms.total` column)
+3. Find batches and their peaks, but this time we're interested only in peaks on Total chromatograms (see `chromatograms.total_signal` column)
 4. Count the number of rows in the last query. And compare it to the number of rows we got before that.
-
-# Subselect, case
+5. Get structure, MF, alias of all substances (the structure itself is in `structures` table). We're not interested in substances w/o structure. Try solving the last condition first with `left join` and additional `where` statement, then try with just `inner join`.
+6. Get all peaks from injections of some batch. Select from injections, the rest should be joined. We don't want to see injections w/o peaks.
+7. Modify last query to only capture `modified_manually` peaks. Try doing this with `where` and with additional conditions inside `join`.
+8. Can you rewrite the last statement with a `right join` if you swap tables in `join` and `select` statements?
 
 # Grouping, aggregating functions
 
@@ -56,6 +58,17 @@ SQL Course
 * Get injection w/ max number of peaks, join them with peaks
 * Aggregation functions: count(), max(), min(), avg(), sum(), percentile()
 * listagg
+
+## Homework
+
+1. Look into `detector_runs` table. It represents physical detectors which may produce more than 1 chromatogram. Now find a way to see all `type`s of detectors currently present in DB. Try doing this with `distinct`, then see if you can achieve the same with `group by`.
+2. Count how many rows of each detector type are present in DB.
+3. Each chromatogram references its `detector_run`. Count how many `chromatograms` of each detector `type` are present in DB. This will require both `join` and `group by`.
+4. Select all chromatograms and an average peak area within those chromatograms. We're interested only in stats across _not_ `modified_manually`. 
+5. See if there are injections with duplicated names in the database. Note, that `ID` is unique, while `name` of injections isn't. Using `having` and `count()` you can filter out those injection names that are _not_ duplicated leaving just the duplicates.
+6.
+
+# Subselect, case
 
 # Data types, functions, casting
 
