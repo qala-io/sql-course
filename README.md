@@ -56,29 +56,35 @@ SQL Course
 * Distinct keyword
 * Group by multiple fields: injections w/ 2 peaks and 2 substances
 * Get injection w/ max number of peaks, join them with peaks
-* Aggregation functions: count(), max(), min(), avg(), sum(), percentile()
+* Aggregation functions: count(), max(), min(), avg(), sum()
 * `string_agg(col, 'separator' order by col)`
 
-## Homework
+## Homework Part 1
 
-1. Look into `detector_runs` table. It represents physical detectors which may produce more than 1 chromatogram. Now find a way to see all `type`s of detectors currently present in DB. Try doing this with `distinct`, then see if you can achieve the same with `group by`.
+1. Look at `detector_runs` table. It represents physical detectors which may produce more than 1 chromatogram. Now find a way to see all `type`s of detectors currently present in DB. Try doing this with `distinct`, then see if you can achieve the same with `group by`.
 2. Count how many rows of each detector type are present in DB.
 3. Each chromatogram references its `detector_run`. Count how many `chromatograms` of each detector `type` are present in DB. This will require both `join` and `group by`.
 4. Select all chromatograms and an average peak area within those chromatograms. We're interested only in stats across _not_ `modified_manually`. 
-5. See if there are injections with duplicated names in the database. Note, that `ID` is unique, while `name` of injections isn't. Using `having` and `count()` you can filter out those injection names that are _not_ duplicated leaving just the duplicates.
 
-6. Get injections within some batch that have more than 2 chromatograms
+## Homework Part 2
+
+1. See if there are injections with duplicated names in the database. Note, that `ID` is unique, while `name` of injections isn't. Using `having` and `count()` you can filter out those injection names that are _not_ duplicated leaving just the duplicates.
+2. Get injections within some batch that have more than 2 chromatograms
    1. Then add a comma-separated list of `detector_runs.type`s within each injection
    2. Add a number of peaks within each injection and an average peak area
-7. Similar to prev task get all peaks within a batch, and for each injection get an average area. But now we need 2 rows for each injection - one for `modified_manually` peaks (and the average area among these peaks), and for for others (same - with average area). If injection has only one type of peaks, then there will be only 1 row, not 2.
+3. Similar to prev task get all peaks within a batch, and for each injection get an average area. But now we need 2 rows for each injection - one for `modified_manually` peaks (and the average area among these peaks), and for others (same - with average area). If injection has only one type of peaks, then there will be only 1 row, not 2.
    1. Now leave only those injections that have more than 1 peak. Filter out the rest.
 
-
-# Subselect, case
+# Subselect
 
 * Sub-select in `where`: injections with peaks where peak area = sum(all peaks on that chromatogram)
 * Sub-select in `select`: peak area compared to the sum of peak areas on that chromatogram
-* 
+
+## Homework
+
+1. Select a single peak with the largest area from the table. First we need to select the max area within the table (sub-select), and in the outer select we can find the peak with that exact area.
+2. Now select the largest peak across each chromatogram. The output should show chromatogram data and an additional column `max_peak_area`. First do this with a `join` and `group by`. Then try doing the same with a sub-select: `select (select ... from ..) from ...`.
+3. Now that you have chromatograms with their Max Peak Area, calculate the sum of these areas per injection. So the output should have columns: `injection, max_peak_area_sum`. Notice that you couldn't do this without sub-selects this time - as first we had to prepare the data set to sum across.
 
 # Data types, functions, casting
 
@@ -86,6 +92,11 @@ SQL Course
 * Numbers
 * Dates: truncate, get day, month, etc
 * Interval
+
+# Case-When
+
+* In select statement
+* Inside `count()`
 
 # Selecting from expressions
 
@@ -127,5 +138,11 @@ Does the result surprise you? Can you explain why this is the case?
 </details> 
 
 # Window functions
+
+## Homework Part 1
+
+## Homework Part 2
+
+1. Calculate conversion
 
 # Indexes
