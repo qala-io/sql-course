@@ -89,9 +89,27 @@ SQL Course
 # Data types, functions, casting
 
 * Strings: upper(), lower(), replace(), concat()
-* Numbers
-* Dates: truncate, get day, month, etc
-* Interval
+* coalesce()
+* Numbers: algebraic operations, round(), least()/greatest()
+* Division of integers vs double
+* Casting
+* boolean
+* Dates: `now()`, `date_trunc('day', creation_time)`, `extract(year from creation_time)`, `to_char(current_timestamp, 'month')`, `'2022-11-29'::timestamp`
+* `interval '1 day'`, `extract(days from creation_time - date_trunc('year', creation_time))`
+* Using functions in conditions, selects, group by
+
+## Homework:
+
+1. Select all users from the `users` table. Combine firstname and lastname into 1 column, separate them with a space.
+2. There are injections with the same name (injection and INJECTION are considered same for this task) in our database. Find all the rows of such duplicates, select all the information about these injections.
+3. Peaks have area, as well as chromatograms. Find the percentage of the peak/chromatogram. Compare this to the column `area_perc` in the peak - does it give the same result?
+4. Calculate a number of injections created monthly, you should get something like this
+   ```
+   month    | injections_created
+   2022 Nov | 133
+   2022 Dec | 564
+   ```
+5. Find injections that contain three dashes in their names: `xxxxxxx-xxxx-xxxx`. The first 2 parts of it (`xxxxxxx-xxxx`) is an experiment name. List all the experiments and the number of injections in each of them.
 
 # Case-When
 
