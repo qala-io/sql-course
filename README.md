@@ -111,14 +111,24 @@ SQL Course
    ```
 5. Find injections that contain three dashes in their names: `xxxxxxx-xxxx-xxxx`. The first 2 parts of it (`xxxxxxx-xxxx`) is an experiment name. List all the experiments and the number of injections in each of them.
 
+# CTE
+
+## Homework
+
+1. We need to calculate the stats on our tables - the number of rows in different tables and the ratio between these numbers. Try to do this with sub-selects and then with CTEs. Example of an output:
+```
+n_of_peaks | n_of_chromatograms | n_of_injections | peaks_per_chromatogram | peaks_per_injection | chromatograms_per_injection
+500        |      200           |     10          | 2.5                    | 50                  | 20   
+```
+2. List all peaks (full rows) which are the largest peaks on a chromatogram _and_ their area is greater than all other peaks on that chromatogram combined. We're not interested in cases when there's only 1 peak per chromatogram.
+
 # Case-When
 
 * In select statement
 * Inside `count()`
 
-# Selecting from expressions
+# Selecting from functions
 
-* CTE
 * Selecting from functions: `now()`, `random()`, `generate_series()`
 * Cross join
 
@@ -162,5 +172,9 @@ Does the result surprise you? Can you explain why this is the case?
 ## Homework Part 2
 
 1. Calculate conversion
+
+# Union
+
+# ROLLUP & CUBE
 
 # Indexes
