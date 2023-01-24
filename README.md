@@ -133,6 +133,7 @@ n_of_peaks | n_of_chromatograms | n_of_injections | peaks_per_chromatogram | pea
 * List the largest peak of each chromatogram
 * List the first peak of each chromatogram (by `rt_minutes`)
 * List peaks of chromatograms and show how much time elapsed between two peaks (use `start_minutes` and `end_minutes` of peaks). Add yet another column `not_resolved` and set it to `true` if peak touches (the values of borders are equal) the previous peak.
+* List chromatogram names in an injection with lot's of detector_runs. Here is 
 
 ## Homework Part 2
 
@@ -142,6 +143,14 @@ n_of_peaks | n_of_chromatograms | n_of_injections | peaks_per_chromatogram | pea
 
 * In select statement
 * Inside `count()`
+
+## Homework
+
+* For each injection we'd like to see its "status". Possible values: 
+   * TBD (To Be Done) - when an injection contains no substances
+   * Analyzed - when there's at least one substance
+   * Curated Manually - when there's at least one peak `modified_manually`
+* Also add another column: if injection has a creator, then let's show their First Last name. If not, let's show "Unknown".
 
 # Selecting from functions
 
