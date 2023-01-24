@@ -109,7 +109,7 @@ SQL Course
    2022 Nov | 133
    2022 Dec | 564
    ```
-5. Find injections that contain three dashes in their names: `xxxxxxx-xxxx-xxxx`. The first 2 parts of it (`xxxxxxx-xxxx`) is an experiment name. List all the experiments and the number of injections in each of them.
+5. Find injections that contain two dashes in their names: `xxxxxxx-xxxx-xxxx`. The first 2 parts of it (`xxxxxxx-xxxx`) is an experiment name. List all the experiments and the number of injections in each of them.
 
 # CTE
 
@@ -120,7 +120,23 @@ SQL Course
 n_of_peaks | n_of_chromatograms | n_of_injections | peaks_per_chromatogram | peaks_per_injection | chromatograms_per_injection
 500        |      200           |     10          | 2.5                    | 50                  | 20   
 ```
-2. List all peaks (full rows) which are the largest peaks on a chromatogram _and_ their area is greater than all other peaks on that chromatogram combined. We're not interested in cases when there's only 1 peak per chromatogram.
+2. List all peaks (full rows) which are the largest peaks on a chromatogram _and_ their area is greater than all other peaks on that chromatogram combined (you can't use chromatogram area as a shortcut - you must sum up peak areas). We're not interested in cases when there's only 1 peak per chromatogram.
+
+# Window functions
+
+* row_number()
+* sum()
+* lag()
+
+## Homework Part 1
+
+* List the largest peak of each chromatogram
+* List the first peak of each chromatogram (by `rt_minutes`)
+* List peaks of chromatograms and show how much time elapsed between two peaks (use `start_minutes` and `end_minutes` of peaks). Add yet another column `not_resolved` and set it to `true` if peak touches (the values of borders are equal) the previous peak.
+
+## Homework Part 2
+
+1. Calculate conversion
 
 # Case-When
 
@@ -163,15 +179,7 @@ Now the condition is a little more complicated: our families have at least one b
 
 Does the result surprise you? Can you explain why this is the case?
 
-</details> 
-
-# Window functions
-
-## Homework Part 1
-
-## Homework Part 2
-
-1. Calculate conversion
+</details>
 
 # Union
 
