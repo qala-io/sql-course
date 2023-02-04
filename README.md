@@ -132,12 +132,28 @@ n_of_peaks | n_of_chromatograms | n_of_injections | peaks_per_chromatogram | pea
 
 * List the largest peak of each chromatogram
 * List the first peak of each chromatogram (by `rt_minutes`)
-* List peaks of chromatograms and show how much time elapsed between two peaks (use `start_minutes` and `end_minutes` of peaks). Add yet another column `not_resolved` and set it to `true` if peak touches (the values of borders are equal) the previous peak.
-* List chromatogram names in an injection with lot's of detector_runs. Here is 
+* List peaks of chromatograms and show how much time elapsed between two peaks (use `start_minutes` and `end_minutes` of peaks). Add yet another column `not_resolved` and set it to `true` if peak touches (the values of borders are equal) the previous peak. 
 
 ## Homework Part 2
 
-1. Calculate conversion
+Calculate conversion for each injection in a batch, the result should be similar to [this table](https://sqlcourse.peaksel.elsci.io/batch/8MTdbvynjJh).
+
+Conversion represents the amount of reactant (e.g. Core) that went into forming Product molecules. It tells us the effectiveness of a reaction. One way to calculate it is: `product_amount / (reactant_amount + product_amount)`. Because we don't really have amounts - we will use Peak Area instead as an approximation. So: `conversion=product_peak_area/(product_peak_area + reactant_peak_area)`.
+
+Notes:
+1. We need to consider only peaks on a single chromatogram - typically we need to choose some extracted UV chromatogram (like `UV 254`). See `chromatograms.nm` column.
+2. It's possible that both Product and Core don't have peaks at all. In this case we want to show `N/A`
+3. If we have only Core, then it's 0
+4. If it's only Product, then 1
+5. It's possible there are more than 1 peak of Product or Core. In such a case let's take the largest.
+
+## Homework Part 3
+
+Calculate chromatogram names same way Peaksel does it. Notice, that some Injections may contain same detectors more than once. In some cases even though physically it's the same detector, it may take different measurements at different times, and so in the extreme cases we may get dozens and even hundreds of detector_runs per Injection, see this example: [03JUN2020_COV_AAA_PL_021](https://sqlcourse.peaksel.elsci.io/injection/8MxJzPev7Mw).
+
+In order to differentiate between detector_runs with the same name, Peaksel suffixes them with a letter: A, B, C, etc. You need to write a query that returns a list of chromatograms with their _names_ within the injection same way Peaksel does it. These names consist of:
+1. Analytical Method (UV, MS, ELS, etc). 
+2. Detector Sub-Type (if applicable): SQD, QTOF, etc. This is present 
 
 # Case-When
 
