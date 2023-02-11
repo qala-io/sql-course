@@ -149,11 +149,14 @@ Notes:
 
 ## Homework Part 3
 
-Calculate chromatogram names same way Peaksel does it. Notice, that some Injections may contain same detectors more than once. In some cases even though physically it's the same detector, it may take different measurements at different times, and so in the extreme cases we may get dozens and even hundreds of detector_runs per Injection, see this example: [03JUN2020_COV_AAA_PL_021](https://sqlcourse.peaksel.elsci.io/injection/8MxJzPev7Mw).
+Calculate chromatogram names the same way Peaksel does it. Notice that some Injections may contain the same detectors more than once. In some cases even though physically it's the same detector, it may take different measurements at different times, and so in the extreme cases we may get dozens and even hundreds of detector_runs per Injection, see this example: [03JUN2020_COV_AAA_PL_021](https://sqlcourse.peaksel.elsci.io/injection/8MxJzPev7Mw).
 
-In order to differentiate between detector_runs with the same name, Peaksel suffixes them with a letter: A, B, C, etc. You need to write a query that returns a list of chromatograms with their _names_ within the injection same way Peaksel does it. These names consist of:
+In order to differentiate between detector_runs with the same name, Peaksel suffixes them with a letter: A, B, C, etc. You need to write a query that returns a list of chromatograms with their _names_ within the injection the same way Peaksel does it. Note, that if there's just 1 instance of a detector_run of each type in the injection, then we don't have A/B/C suffixes. 
+
+These names also consist of:
 1. Analytical Method (UV, MS, ELS, etc). 
-2. Detector Sub-Type (if applicable): SQD, QTOF, etc. This is present 
+2. Detector Sub-Type (if applicable): SQD, QTOF, etc. 
+3. If it's a Mass Spec, then ion_mode will say if it's positive or negative (+ or - sign)
 
 # Case-When
 
