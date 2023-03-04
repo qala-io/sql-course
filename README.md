@@ -211,6 +211,30 @@ Does the result surprise you? Can you explain why this is the case?
 
 # Union
 
+* `union all` vs `union`
+
+## Homework
+
+We want to generate statistics for uploading injections, which should look like this:
+
+```
+user   | uploaded_month  | count
+---------------------------------
+Rick   | Jan             | 100 
+Rick   | Feb             | 50
+... 
+Morty  | Jan             | 111 
+Morty  | Feb             | 232
+...
+all    | Jan             | 666 
+all    | Feb             | 282
+... 
+Rick   | all             | 2523
+Morty  | all             | 1880
+...
+all    | all             | 12513
+```
+
 # ROLLUP & CUBE
 
 # Indexes
